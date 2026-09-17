@@ -28,5 +28,10 @@ namespace CalculatorCICD
 
             return a / b;
         }
+
+        public double Square(double number)
+        {
+            return number * number;
+        }
     }
 }

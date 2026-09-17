@@ -57,5 +57,13 @@ namespace CalculatorCICD.Tests
             // Assert
             Assert.Equal(5, result);
         }
+
+        [Fact]
+        public void Square_Number_ReturnsCorrectResult()
+        {
+            Calculator calculator = new Calculator();
+            double result = calculator.Square(5);
+            Assert.Equal(25, result);
+        }
     }
 }
