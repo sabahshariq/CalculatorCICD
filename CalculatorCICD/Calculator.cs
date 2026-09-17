@@ -31,7 +31,7 @@ namespace CalculatorCICD
 
         public double Square(double number)
         {
-            return number * number;
+            return number + number;
         }
     }
 }
