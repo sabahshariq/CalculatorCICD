@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../CalculatorCICD.Tests/CalculatorCICD.Tests.csproj" Id="3fa970bd-d1f1-47ca-8307-ae54da59d20d" />
+  <Project Path="CalculatorCICD.csproj" />
+</Solution>
