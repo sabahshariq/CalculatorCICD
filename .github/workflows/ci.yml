@@ -23,10 +23,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore CalculatorCICD/CalculatorCICD.sln
+        run: dotnet restore CalculatorCICD/CalculatorCICD.slnx
 
       - name: Build
-        run: dotnet build CalculatorCICD/CalculatorCICD.sln --no-restore
+        run: dotnet build CalculatorCICD/CalculatorCICD.slnx --no-restore
 
       - name: Run tests
-        run: dotnet test CalculatorCICD/CalculatorCICD.sln --no-build
+        run: dotnet test CalculatorCICD/CalculatorCICD.slnx --no-build
