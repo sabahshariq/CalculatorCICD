@@ -8,7 +8,7 @@ namespace CalculatorCICD
     {
         public double Add(double a, double b)
         {
-            return a - c; //For testing intentionally changed
+            return a + b;
         }
 
         public double Subtract(double a, double b)
