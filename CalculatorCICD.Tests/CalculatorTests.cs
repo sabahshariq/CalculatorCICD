@@ -8,7 +8,7 @@ namespace CalculatorCICD.Tests
     {
         [Fact]
         public void Add_TwoNumbers_ReturnsCorrectResult()
-        {
+        { //empty
             //Arrange
             Calculator calc = new Calculator();
 
