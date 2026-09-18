@@ -39,9 +39,8 @@ jobs:
     # Delivery
     # ------------------------- 
   publish:
-    needs: build-and-test
-    
-    run-on: ubuntu-latest
+    needs: build-and-test    
+    runs-on: ubuntu-latest
     
     steps:
       - name: Publish application
