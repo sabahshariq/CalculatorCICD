@@ -40,6 +40,7 @@ jobs:
     # ------------------------- 
   publish:
     needs: build-and-test
+    
     run-on: ubuntu-latest
     
     steps:
