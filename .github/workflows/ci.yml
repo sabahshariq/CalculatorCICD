@@ -14,7 +14,7 @@ jobs:
   # -------------------------
   # CI
   # -------------------------
-  build-and-test:
+  build-and-publish:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,32 +30,36 @@ jobs:
         run: dotnet restore CalculatorCICD/CalculatorCICD.slnx
 
       - name: Build
-        run: dotnet build CalculatorCICD/CalculatorCICD.slnx --no-restore
+        run: dotnet build CalculatorCICD/CalculatorCICD.slnx -c Release --no-restore
 
       - name: Run tests
-        run: dotnet test CalculatorCICD/CalculatorCICD.slnx --no-build
- 
-    # -------------------------
-    # Delivery
-    # ------------------------- 
-  publish:
-    needs: build-and-test    
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '10.0.x'
-      
+        run: dotnet test CalculatorCICD/CalculatorCICD.slnx -c Release --no-build
+        
       - name: Publish application
-        run: dotnet publish CalculatorCICD/CalculatorCICD.csproj -c Release -o ./publish
+        run: dotnet publish CalculatorCICD/CalculatorCICD.csproj -c Release --no-build -o ./publish
         
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: calculator-app
           path: ./publish
+ 
+    # -------------------------
+    # Delivery
+    # ------------------------- 
+  deploy:
+    needs: build-test-publish   
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: calculator-app
+          path: ./deployment
+
+      - name: Show deployment files
+        run: ls -la ./deployment
+        
+      
+      
