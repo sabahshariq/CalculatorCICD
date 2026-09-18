@@ -30,3 +30,12 @@ jobs:
 
       - name: Run tests
         run: dotnet test CalculatorCICD/CalculatorCICD.slnx --no-build
+        
+      - name: Publish application
+        run: dotnet publish CalculatorCICD/CalculatorCICD.csproj -c Release -o ./publish
+        
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: calculator-app
+          path: ./publish
