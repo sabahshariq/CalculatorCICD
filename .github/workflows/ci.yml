@@ -10,6 +10,10 @@ on:
       - main
 
 jobs:
+
+  # -------------------------
+  # CI
+  # -------------------------
   build-and-test:
     runs-on: ubuntu-latest
 
@@ -30,7 +34,15 @@ jobs:
 
       - name: Run tests
         run: dotnet test CalculatorCICD/CalculatorCICD.slnx --no-build
-        
+ 
+    # -------------------------
+    # Delivery
+    # ------------------------- 
+  publish:
+    needs: build-and-test
+    run-on: ubuntu-latest
+    
+    steps:
       - name: Publish application
         run: dotnet publish CalculatorCICD/CalculatorCICD.csproj -c Release -o ./publish
         
